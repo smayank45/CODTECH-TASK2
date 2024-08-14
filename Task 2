@@ -1,0 +1,69 @@
+import java.net.Socket;
+import java.security.MessageDigest;
+
+// Basic structure for Blockchain Security Audit
+public class BlockchainSecurityAudit {
+
+    // Placeholder for analyzing smart contracts
+    public void analyzeSmartContract(String contract) {
+        // Call external tools or APIs to analyze Solidity code for vulnerabilities
+        System.out.println("Analyzing smart contract for vulnerabilities...");
+    }
+
+    // Consensus mechanism analysis: Simulate a 51% attack
+    public void analyzeConsensusMechanism() {
+        System.out.println("Analyzing consensus mechanism...");
+        // Logic to simulate consensus attacks
+    }
+
+    // Network infrastructure analysis: Basic socket connection check
+    public void analyzeNetworkInfrastructure(String nodeIP, int port) {
+        try (Socket socket = new Socket(nodeIP, port)) {
+            System.out.println("Node " + nodeIP + " is reachable on port " + port);
+        } catch (Exception e) {
+            System.out.println("Failed to connect to node " + nodeIP + " on port " + port);
+        }
+    }
+
+    // Placeholder for hashing and encryption checks
+    public void checkEncryption(String data) throws Exception {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(data.getBytes("UTF-8"));
+        System.out.println("Hash (SHA-256): " + bytesToHex(hash));
+    }
+
+    // Helper function to convert bytes to hex
+    private String bytesToHex(byte[] bytes) {
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : bytes) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
+    public static void main(String[] args) {
+        BlockchainSecurityAudit audit = new BlockchainSecurityAudit();
+
+        // Example smart contract analysis
+        String contract = "contract code here";
+        audit.analyzeSmartContract(contract);
+
+        // Example consensus mechanism analysis
+        audit.analyzeConsensusMechanism();
+
+        // Example network infrastructure analysis
+        String nodeIP = "127.0.0.1";
+        int port = 8333;
+        audit.analyzeNetworkInfrastructure(nodeIP, port);
+
+        // Example encryption check
+        try {
+            String data = "sample data";
+            audit.checkEncryption(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
